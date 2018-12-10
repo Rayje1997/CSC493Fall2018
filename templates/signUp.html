@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	<title>New User</title>
+{% endblock title %}
+
+{% block content %}
+
+	<h1>BibleShare Sign Up</h1>
+
+	<br>
+	
+
+	<h1>Sorry this feature is currently not implemented :(</h1>
+	<h1>Please check back with us later! :D</h1>
+
+	
+	<form action="{{url_for('checkSignup')}}" method='post'>
+		<p>Username:</p>
+		<input name="username" type="text" />
+
+		<p>Password</p>
+		<input name="password" type="password" />
+
+		<p>Confirm Password</p>
+		<input name="Confirm Password" type="password" />
+
+		<input type="submit" value="Sign Up" />
+	</form>
+
+	{% if error %}
+		<p>{{ error }}</p>
+	{% endif %}
+
+	<br>
+
+	<form action="{{url_for('index')}}" method='post'>
+		<input type="submit" value="Back to Login" />
+	</form>
+
+{% endblock content %}

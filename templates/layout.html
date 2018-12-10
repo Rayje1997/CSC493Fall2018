@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 
+			Style tags are temporary and will be replaced 
+			with a CSS file later.
+		-->
+		<style type="text/css">
+			#Bible {
+				float: left;
+				max-width: 50%;
+			}
+			
+			#Notes {
+				float: right;
+				max-width: 50%;
+			}
+			
+			textarea {
+				float: left;
+				height: auto;
+				width: auto;
+			}
+		</style>
+		
+		{% block title %}{% endblock title %}
+	</head>
+
+	<body>
+		<div class='container'>
+			{% block content %}{% endblock content %}
+		</div>
+	</body>
+
+</html>

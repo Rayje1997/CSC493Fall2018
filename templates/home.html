@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	<title>BibleShare Home</title>
+{% endblock title %}
+
+{% block content %}
+
+	<form action = "{{url_for('index')}}">
+		<input type = "submit" value = "Logout"/>
+	</form>
+
+	<br>
+
+	<form action="{{url_for('home')}}" method="POST">
+
+		<!-- Select box to select book -->
+		<select name="bookSelect" id="bookSelect">
+			{% for i in range(bible|count) %}
+				<option value="{{i}}">
+					{{bible[i]['name']}}
+				</option>
+			{% endfor %}
+		</select>
+
+		<!-- Starting select box for the chapters -->
+		<select name="chapter">
+			{% for i in range(150) %}
+				<option value="{{i}}">
+					{{i + 1}}
+				</option>
+			{% endfor %}
+		</select>
+
+		<!-- Starting select box for the verses-->
+		<select name="versesStart">
+			<option value='all'>
+				all
+			</option>
+			
+			{% for i in range(176) %}
+				<option value="{{i}}">
+					{{i + 1}}
+				</option>
+			{% endfor %}
+		</select>
+
+		<!-- Ending select box for the verses -->
+		<select name="versesEnd">
+			<option value='all'>
+				all
+			</option>
+			
+			{% for i in range(176) %}
+				<option="{{i}}">
+					{{i + 1}}
+				</option>
+			{% endfor %}
+		</select>
+
+		<input type="submit" value="Select">
+	</form>
+
+	<div id = "Bible">
+		{% if desiredContent %}
+			{% for i in desiredContent %}
+				<p>{{i}}<p>
+			{% endfor %}
+		{% endif %}
+	</div>
+
+	<div id = "Notes">
+		<textarea rows = "80" cols = "100"></textarea>
+		<form>
+			<input type = "submit" value = "Save">
+		</form>
+	</div>
+
+{% endblock content %}
