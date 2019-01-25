@@ -47,7 +47,6 @@ def checkLogin():
 	#return: redirect to home or back to index
 
     # Variable to hold the error
-
     error = None
 
     if request.method == 'POST':
