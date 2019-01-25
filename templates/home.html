@@ -9,11 +9,9 @@
 	<form action = "{{url_for('index')}}">
 		<input type = "submit" value = "Logout"/>
 	</form>
-
 	<br>
 
 	<form action="{{url_for('home')}}" method="POST">
-
 		<!-- Select box to select book -->
 		<select name="bookSelect" id="bookSelect">
 			{% for i in range(bible|count) %}
