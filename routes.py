@@ -22,8 +22,6 @@ with open('static/js/KJV.json') as b:
 with open('static/js/users.json') as u:
     users = json.load(u)
 
-
-
 app = Flask(__name__)
 app.static_folder = 'static'
 app.secret_key = str(random.randrange(1000000))
@@ -74,17 +72,6 @@ def signUp():
 
     return render_template('signUp.html')
 
-	
-
-
-
-
-
-
-
-
-	
-	
 @app.route('/checkSignup', methods = ['GET', 'POST'])
 def checkSignup():
 	#Checks the information given against users.json and
@@ -106,23 +93,12 @@ def checkSignup():
         return render_template('signUp.html', error = error)
     return render_template('checkSignup.html')
 
-
-
-
-
-
-
-
-	
-	
-	
 def bibleSelection(B, CH, VS, VE):
     #This function uses the user inputs taken from forms to select the portion
     #of the Bible to display.
 
     #param: B (book), CHS (Chapters Start), CHE (Chapters End), VS (Verses Start), VE (Verses End)
     #return: result (an array containing the appropriate verses)
-
 
     result = []
 
@@ -143,14 +119,13 @@ def bibleSelection(B, CH, VS, VE):
         rng = VE - VS
         for ver in range(len(bible[B]['chapters'][VS + rng])):
             result.append(bible[B]['chapters'][CH][ver])
-
     return result
 
 
 @app.route('/home', methods = ['GET', 'POST'])
 def home():
     #Controller function for the home page
-
+    
     #checks to see if the user exists before it renders the page
     if "user" in session:
         if request.method == 'POST':
@@ -158,16 +133,13 @@ def home():
             CH = request.form['chapter']
             VS = request.form['versesStart']
             VE = request.form['versesEnd']
-
             desiredContent = bibleSelection(B, CH, VS, VE)
-
             return render_template('home.html', bible = bible, desiredContent = desiredContent)
         else:
             return render_template('home.html', bible = bible)
     else:
         error = "Please log in"
         return render_template("index.html", error = error)
-
 
 if __name__ == '__main__':
     app.run(debug = True)
